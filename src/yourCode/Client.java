@@ -27,19 +27,19 @@ public class Client  {
 	 *  port: the port number
 	 *  username: the username
 	 */
-	Client(String server, int port, String username) {
+	Client(String server, int port) {
 		// which calls the common constructor with the GUI set to null
-		this(server, port, username, null);
+		this(server, port, null);
 	}
 
 	/*
 	 * Constructor call when used from a GUI
 	 * in console mode the ClienGUI parameter is null
 	 */
-	Client(String server, int port, String username, ClientGUI cg) {
+	Client(String server, int port, ClientGUI cg) {
 		this.server = server;
 		this.port = port;
-		this.username = username;
+		this.username = System.getProperty("user.name");;
 		// save if we are in GUI mode or not
 		this.cg = cg;
 	}
@@ -156,7 +156,7 @@ public class Client  {
 		// default values
 		int portNumber = 1500;
 		String serverAddress = "localhost";
-		String userName = "Anonymous";
+		String userName = "";
 
 		// depending of the number of arguments provided we fall through
 		switch(args.length) {
@@ -185,7 +185,7 @@ public class Client  {
 			return;
 		}
 		// create the Client object
-		Client client = new Client(serverAddress, portNumber, userName);
+		Client client = new Client(serverAddress, portNumber);
 		// test if we can start the connection to the Server
 		// if it failed nothing we can do
 		if(!client.start())

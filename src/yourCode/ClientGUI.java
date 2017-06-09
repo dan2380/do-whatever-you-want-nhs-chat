@@ -32,7 +32,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 	// Constructor connection receiving a socket number
 	ClientGUI(String host, int port) {
 
-		super("Chat Client");
+		super("Newport High School Chat Client");
 		defaultPort = port;
 		defaultHost = host;
 		
@@ -54,15 +54,15 @@ public class ClientGUI extends JFrame implements ActionListener {
 		northPanel.add(serverAndPort);
 
 		// the Label and the TextField
-		label = new JLabel("Enter your username below", SwingConstants.CENTER);
+		label = new JLabel("Welcome " + System.getProperty("user.name"), SwingConstants.CENTER);
 		northPanel.add(label);
-		tf = new JTextField("Anonymous");
+		tf = new JTextField(System.getProperty("user.name"));
 		tf.setBackground(Color.WHITE);
 		northPanel.add(tf);
 		add(northPanel, BorderLayout.NORTH);
 
 		// The CenterPanel which is the chat room
-		ta = new JTextArea("Welcome to the Chat room\n", 80, 80);
+		ta = new JTextArea("Welcome to the Newport Chat room. Use appropriately.\n", 80, 80);
 		JPanel centerPanel = new JPanel(new GridLayout(1,1));
 		centerPanel.add(new JScrollPane(ta));
 		ta.setEditable(false);
@@ -110,6 +110,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 		// let the user change them
 		tfServer.setEditable(false);
 		tfPort.setEditable(false);
+		tf.setEditable(false);
 		// don't react to a <CR> after the username
 		tf.removeActionListener(this);
 		connected = false;
@@ -163,7 +164,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 			}
 
 			// try creating a new Client with GUI
-			client = new Client(server, port, username, this);
+			client = new Client(server, port, this);
 			// test if we can start the Client
 			if(!client.start()) 
 				return;

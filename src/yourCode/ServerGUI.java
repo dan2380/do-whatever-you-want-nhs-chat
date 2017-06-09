@@ -22,7 +22,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	
 	// server constructor that receive the port to listen to for connection as parameter
 	ServerGUI(int port) {
-		super("Chat Server");
+		super("Newport High School Chat Server");
 		server = null;
 		// in the NorthPanel the PortNumber the Start and Stop buttons
 		JPanel north = new JPanel();
@@ -84,7 +84,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			appendEvent("Invalid port number");
 			return;
 		}
-		// ceate a new Server
+		// create a new Server
 		server = new Server(port, this);
 		// and start it as a thread
 		new ServerRunning().start();
