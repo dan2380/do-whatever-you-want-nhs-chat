@@ -22,7 +22,31 @@ public class ChatMessage implements Serializable {
 	// constructor
 	ChatMessage(int type, String message) {
 		this.type = type;
-		this.message = message;
+		this.message = filter(message);
+	}
+	//filter
+	String filter(String message) {
+		if(message.toUpperCase().contains("FUCK") || message.toUpperCase().contains("FCK")) {
+			return "*****";
+		}
+		else if(message.toUpperCase().contains("SHIT") || message.toUpperCase().contains("SHT")) {
+			return "****";
+		}
+		else if(message.toUpperCase().contains("BITCH") || message.toUpperCase().contains("BTCH")) {
+			return "*****";
+		}
+		else if(message.equalsIgnoreCase("CUNT") || message.toUpperCase().contains("CNT")) {
+			return "****";
+		}
+		else if(message.equalsIgnoreCase("COCK") || message.toUpperCase().contains("DICK")) {
+			return "*****";
+		}
+		else if(message.equalsIgnoreCase("ASS") || message.toUpperCase().contains("ASSHOLE")) {
+			return "*****";
+		}	
+		else {
+			return message;
+		}
 	}
 	
 	// getters

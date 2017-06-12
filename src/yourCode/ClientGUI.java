@@ -188,7 +188,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 
 	// to start the whole thing the server
 	public static void main(String[] args) {
-		new ClientGUI("localhost", 1500);
+		new ClientGUI("10.53.101.175", 1500);
 	}
 
 }
